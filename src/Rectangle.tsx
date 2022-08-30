@@ -41,7 +41,7 @@ const Rectangle = ({ data, order }: RectangleT) => {
       .duration(600)
       .attr("width", `${width}`)
       .attr("id", `guage${order}`)
-      .style("background-color", "blue")
+      .style("background-color", "#849fbd")
       .style("position", "absolute");
   };
 
