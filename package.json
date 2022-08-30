@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.2.1",
+    "@tanstack/react-query-devtools": "^4.2.1",
+    "@types/d3": "^7.4.0",
+    "d3": "^7.6.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "18.7.13",
