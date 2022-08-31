@@ -9,6 +9,7 @@ interface RectangleT {
 
 const Rectangle = ({ data, order }: RectangleT) => {
   const ref = useRef(null);
+  const prevData = useRef(0);
 
   const RemovePrev = () => {
     d3.select(`#box${order}`).remove();
@@ -20,16 +21,17 @@ const Rectangle = ({ data, order }: RectangleT) => {
     const width = percent * 200;
 
     const currentElement = ref.current;
+    const prevWidth = prevData.current * 20;
+    console.log("prevWidth: ", prevWidth);
 
     RemovePrev();
 
     const svg = d3
       .select(currentElement)
       .append("svg")
-      .attr("width", 0)
+      .attr("width", prevWidth)
       .attr("height", 100)
       .attr("id", `box${order}`)
-      // .style("outline", "1px solid blue")
       .style("position", "absolute")
       .transition()
       .ease(d3.easeLinear)
@@ -79,6 +81,7 @@ const Rectangle = ({ data, order }: RectangleT) => {
 
   useEffect(() => {
     drawSome();
+    prevData.current = data;
   }, [data]);
 
   return (
