@@ -25,6 +25,23 @@ const Canvas = ({ data }: CanvasT) => {
     gradient.addColorStop(0.5, "#7fa9d8");
     gradient.addColorStop(1, "#2cadd1");
 
+    const drawLine = () => {
+      context.clearRect(0, 0, 200, 100);
+      context.fillStyle = gradient;
+      context.strokeStyle = "white";
+      context.beginPath();
+      context.moveTo(0, 0);
+      context.lineTo(200, 0);
+      context.lineTo(200, 100);
+      context.bezierCurveTo(200, 100, 100, 30, 0, 100);
+      context.lineTo(0, 0);
+      context.stroke();
+      context.fill();
+      context.beginPath();
+      context.fillStyle = "white";
+      context.fillRect(dx, 0, 200 - dx, 100);
+    };
+
     const render = () => {
       if (dx === width) {
         cancelAnimationFrame(reqAnim);
@@ -32,37 +49,12 @@ const Canvas = ({ data }: CanvasT) => {
       }
 
       if (width > prevWidth && dx < width) {
-        context.clearRect(0, 0, 200, 100);
-        context.fillStyle = gradient;
-        context.strokeStyle = "white";
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(200, 0);
-        context.lineTo(200, 100);
-        context.bezierCurveTo(200, 100, 100, 30, 0, 100);
-        context.lineTo(0, 0);
-        context.stroke();
-        context.fill();
-        context.beginPath();
-        context.fillStyle = "white";
-        context.fillRect(dx, 0, 200 - dx, 100);
+        drawLine();
         dx = dx + (width - prevWidth) / 60;
       }
+
       if (prevWidth > width && dx > width) {
-        context.clearRect(0, 0, 200, 100);
-        context.fillStyle = gradient;
-        context.strokeStyle = "white";
-        context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(200, 0);
-        context.lineTo(200, 100);
-        context.bezierCurveTo(200, 100, 100, 30, 0, 100);
-        context.lineTo(0, 0);
-        context.stroke();
-        context.fill();
-        context.beginPath();
-        context.fillStyle = "white";
-        context.fillRect(dx, 0, 200 - dx, 100);
+        drawLine();
         dx = dx + (width - prevWidth) / 60;
       }
 
