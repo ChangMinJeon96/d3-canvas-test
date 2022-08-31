@@ -11,7 +11,7 @@ interface DataT {
 }
 
 const Home = () => {
-  const sampleData = Array(100).fill(0);
+  const sampleData = Array(10).fill(0);
   const [data, setData] = useState(0);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const Home = () => {
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(5, 1fr)",
-        gridTemplateRows: "repeat(6, 1fr)",
         gap: "20px",
       }}
     >
@@ -36,6 +35,7 @@ const Home = () => {
         <Rectangle data={data} order={index} key={index} />
       ))} */}
       {/* <Canvas data={data} /> */}
+      {/* <Rectangle data={data} order={0} /> */}
 
       {sampleData.map((_, index) => (
         <Canvas data={data} key={index} />

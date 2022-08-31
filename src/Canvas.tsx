@@ -18,6 +18,11 @@ const Canvas = ({ data }: CanvasT) => {
     const canvas = canvasRef.current as HTMLCanvasElement;
     const context = canvas?.getContext("2d") as CanvasRenderingContext2D;
 
+    const gradient = context.createLinearGradient(0, 0, 200, 200);
+    gradient.addColorStop(0, "#8794a2");
+    gradient.addColorStop(0.5, "#7fa9d8");
+    gradient.addColorStop(1, "#2cadd1");
+
     const render = () => {
       if (dx >= width) {
         cancelAnimationFrame(reqAnim);
@@ -25,7 +30,7 @@ const Canvas = ({ data }: CanvasT) => {
       }
 
       context.clearRect(0, 0, 200, 100);
-      context.fillStyle = "#849fbd";
+      context.fillStyle = gradient;
       context.strokeStyle = "white";
       context.beginPath();
       context.moveTo(0, 0);
@@ -35,12 +40,9 @@ const Canvas = ({ data }: CanvasT) => {
       context.lineTo(0, 0);
       context.stroke();
       context.fill();
+      context.beginPath();
       context.fillStyle = "white";
       context.fillRect(dx, 0, 200 - dx, 100);
-
-      // context.clearRect(0, 0, 200, 100);
-      // context.strokeRect(0, 0, 200, 100);
-      // context.fillRect(0, 0, dx, 100);
 
       dx += width / 60;
       reqAnim = requestAnimationFrame(render);
