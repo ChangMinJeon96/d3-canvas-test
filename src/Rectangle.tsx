@@ -79,13 +79,44 @@ const Rectangle = ({ data, order }: RectangleT) => {
       .style("fill", "url(#gradcolor)");
   };
 
+  // useEffect(() => {
+  //   drawSome();
+  //   prevData.current = data;
+  // }, [data]);
+
   useEffect(() => {
-    drawSome();
-    prevData.current = data;
-  }, [data]);
+    const currentElement = ref.current;
+
+    const svg = d3
+      .select(currentElement)
+      .append("svg")
+      .attr("width", 200)
+      .attr("height", 100)
+      .attr("id", `box${order}`)
+      .style("position", "absolute")
+      .transition()
+      .ease(d3.easeLinear)
+      .duration(600)
+      .attr("width", 200);
+
+    const example = d3
+      .select(`#box${order}`)
+      .append("path")
+      .attr("d", "M 0,0 L 200,0 L 200,100 Q 100,30,0,100 L0,0")
+      .attr("stroke", "none")
+      .style("fill", "red");
+  }, []);
 
   return (
-    <div ref={ref} style={{ position: "relative", height: "105px" }}></div>
+    <div ref={ref} style={{ position: "relative", height: "105px" }}>
+      {/* <svg>
+        <path
+          fill="red"
+          stroke="blue"
+          d="M 0,0 L 200,0 L 200,100 Q 100,30,0,100 L0,0"
+        ></path>
+      </svg> */}
+    </div>
   );
 };
 

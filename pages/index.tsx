@@ -11,7 +11,7 @@ interface DataT {
 }
 
 const Home = () => {
-  const sampleData = Array(50).fill(0);
+  const sampleData = Array(100).fill(0);
   const [data, setData] = useState(0);
 
   useEffect(() => {
@@ -31,11 +31,13 @@ const Home = () => {
         gap: "20px",
       }}
     >
+      <Rectangle data={data} order={0} />
+
       {/* {sampleData.map((_, index) => (
         <Rectangle data={data} order={index} key={index} />
       ))} */}
-      <Canvas data={data} />
-      {/* <Rectangle data={data} order={0} /> */}
+
+      {/* <Canvas data={data} /> */}
 
       {/* {sampleData.map((_, index) => (
         <Canvas data={data} key={index} />
