@@ -13,10 +13,11 @@ const Rectangle = ({ data, order }: RectangleT) => {
 
   const RemovePrev = () => {
     d3.select(`#box${order}`).remove();
+    d3.select(`#box${order}second`).remove();
     d3.select(`#guage${order}`).remove();
   };
 
-  const drawSome = () => {
+  useEffect(() => {
     const percent = data / 10;
     const width = percent * 200;
 
@@ -24,99 +25,146 @@ const Rectangle = ({ data, order }: RectangleT) => {
     const prevWidth = prevData.current * 20;
     console.log("prevWidth: ", prevWidth);
 
+    // RemovePrev();
+
+    const drawFirstSvg = () => {
+      const svg = d3
+        .select(currentElement)
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 100)
+        .attr("id", `box${order}`)
+        .style("position", "absolute");
+
+      const lg = d3
+        .select(`#box${order}`)
+        .append("defs")
+        .append("linearGradient")
+        .attr("id", "gradcolor")
+        .attr("x1", "0%")
+        .attr("x2", "100%")
+        .attr("y1", "0%")
+        .attr("y2", "0%");
+
+      lg.append("stop").attr("offset", "0%").style("stop-color", "#2cadd1");
+      // .style("stop-opacity", 1);
+
+      lg.append("stop").attr("offset", "20%").style("stop-color", "#7fa9d8");
+      // .style("stop-opacity", 1);
+
+      lg.append("stop").attr("offset", "50%").style("stop-color", "#8794a2");
+      // .style("stop-opacity", 1);
+
+      lg.append("stop")
+        .attr("offset", "50%")
+        .style("stop-color", "transparent");
+      // .style("stop-opacity", 1);
+
+      const path = d3.path();
+      path.moveTo(0, 0);
+      path.lineTo(200, 0);
+      path.lineTo(200, 100);
+      path.bezierCurveTo(200, 100, 100, 0, 0, 100);
+      path.closePath();
+
+      const example = d3
+        .select(`#box${order}`)
+        .append("path")
+        .attr("d", path.toString())
+        .attr("stroke", "none")
+        .style("fill", "url(#gradcolor)");
+    };
+
+    // 두번째 SVG
+    const drawSecondSvg = () => {
+      const svgSecond = d3
+        .select(currentElement)
+        .append("svg")
+        .attr("width", prevWidth)
+        .attr("height", 100)
+        .attr("id", `box${order}second`)
+        .style("position", "absolute")
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(600)
+        .attr("width", `${width}`);
+
+      const lgSecond = d3
+        .select(`#box${order}second`)
+        .append("defs")
+        .append("linearGradient")
+        .attr("id", "gradcolorSecond")
+        .attr("x1", "0%")
+        .attr("x2", "100%")
+        .attr("y1", "0%")
+        .attr("y2", "0%");
+
+      lgSecond
+        .append("stop")
+        .attr("offset", "50%")
+        .style("stop-color", "white");
+
+      lgSecond
+        .append("stop")
+        .attr("offset", "50%")
+        .style("stop-color", "#8794a2");
+
+      lgSecond
+        .append("stop")
+        .attr("offset", "70%")
+        .style("stop-color", "#7fa9d8");
+
+      lgSecond
+        .append("stop")
+        .attr("offset", "100%")
+        .style("stop-color", "#2cadd1");
+
+      const pathSecond = d3.path();
+      pathSecond.moveTo(0, 0);
+      pathSecond.lineTo(200, 0);
+      pathSecond.lineTo(200, 100);
+      pathSecond.bezierCurveTo(200, 100, 100, 0, 0, 100);
+      pathSecond.closePath();
+
+      const exampleSecond = d3
+        .select(`#box${order}second`)
+        .append("path")
+        .attr("d", pathSecond.toString())
+        .attr("stroke", "none")
+        .style("fill", "url(#gradcolorSecond)");
+    };
+
     RemovePrev();
-
-    const svg = d3
-      .select(currentElement)
-      .append("svg")
-      .attr("width", prevWidth)
-      .attr("height", 100)
-      .attr("id", `box${order}`)
-      .style("position", "absolute")
-      .transition()
-      .ease(d3.easeLinear)
-      .duration(600)
-      .attr("width", `${width}`);
-    // .attr("width", 200);
-
-    const lg = d3
-      .select(`#box${order}`)
-      .append("defs")
-      .append("linearGradient")
-      .attr("id", "gradcolor")
-      .attr("x1", "0%")
-      .attr("x2", "100%")
-      .attr("y1", "0%")
-      .attr("y2", "0%");
-
-    lg.append("stop")
-      .attr("offset", "0%")
-      .style("stop-color", "#8794a2")
-      .style("stop-opacity", 1);
-
-    lg.append("stop")
-      .attr("offset", "50%")
-      .style("stop-color", "#7fa9d8")
-      .style("stop-opacity", 1);
-
-    lg.append("stop")
-      .attr("offset", "100%")
-      .style("stop-color", "#2cadd1")
-      .style("stop-opacity", 1);
-
-    const path = d3.path();
-    path.moveTo(0, 0);
-    path.lineTo(200, 0);
-    path.lineTo(200, 100);
-    path.bezierCurveTo(200, 100, 100, 0, 0, 100);
-    path.closePath();
-
-    const example = d3
-      .select(`#box${order}`)
-      .append("path")
-      .attr("d", path.toString())
-      .attr("stroke", "none")
-      .style("fill", "url(#gradcolor)");
-  };
+    drawFirstSvg();
+    drawSecondSvg();
+    prevData.current = data;
+  }, [data]);
 
   // useEffect(() => {
-  //   drawSome();
-  //   prevData.current = data;
-  // }, [data]);
+  //   const currentElement = ref.current;
 
-  useEffect(() => {
-    const currentElement = ref.current;
+  //   const svg = d3
+  //     .select(currentElement)
+  //     .append("svg")
+  //     .attr("width", 200)
+  //     .attr("height", 100)
+  //     .attr("id", `box${order}`)
+  //     .style("position", "absolute")
+  //     .transition()
+  //     .ease(d3.easeLinear)
+  //     .duration(600)
+  //     .attr("width", 200);
 
-    const svg = d3
-      .select(currentElement)
-      .append("svg")
-      .attr("width", 200)
-      .attr("height", 100)
-      .attr("id", `box${order}`)
-      .style("position", "absolute")
-      .transition()
-      .ease(d3.easeLinear)
-      .duration(600)
-      .attr("width", 200);
-
-    const example = d3
-      .select(`#box${order}`)
-      .append("path")
-      .attr("d", "M 0,0 L 200,0 L 200,100 Q 100,30,0,100 L0,0")
-      .attr("stroke", "none")
-      .style("fill", "red");
-  }, []);
+  //   const example = d3
+  //     .select(`#box${order}`)
+  //     .append("path")
+  //     .attr("d", "M 0,0 L 200,0 L 200,100 Q 100,30,0,100 L0,0")
+  //     .attr("stroke", "none")
+  //     .style("fill", "red");
+  // }, []);
 
   return (
-    <div ref={ref} style={{ position: "relative", height: "105px" }}>
-      {/* <svg>
-        <path
-          fill="red"
-          stroke="blue"
-          d="M 0,0 L 200,0 L 200,100 Q 100,30,0,100 L0,0"
-        ></path>
-      </svg> */}
-    </div>
+    <div ref={ref} style={{ position: "relative", height: "105px" }}></div>
   );
 };
 
