@@ -14,6 +14,7 @@ const Rectangle = ({ data, order }: RectangleT) => {
   const RemovePrev = () => {
     d3.select(`#box${order}`).remove();
     d3.select(`#box${order}second`).remove();
+    d3.select(`#bar`).remove();
     d3.select(`#guage${order}`).remove();
   };
 
@@ -55,9 +56,7 @@ const Rectangle = ({ data, order }: RectangleT) => {
       lg.append("stop").attr("offset", "50%").style("stop-color", "#8794a2");
       // .style("stop-opacity", 1);
 
-      lg.append("stop")
-        .attr("offset", "50%")
-        .style("stop-color", "transparent");
+      lg.append("stop").attr("offset", "50%").style("stop-color", "#535459");
       // .style("stop-opacity", 1);
 
       const path = d3.path();
@@ -102,7 +101,7 @@ const Rectangle = ({ data, order }: RectangleT) => {
       lgSecond
         .append("stop")
         .attr("offset", "50%")
-        .style("stop-color", "white");
+        .style("stop-color", "#535459");
 
       lgSecond
         .append("stop")
@@ -134,9 +133,33 @@ const Rectangle = ({ data, order }: RectangleT) => {
         .style("fill", "url(#gradcolorSecond)");
     };
 
+    const drawMiddleBar = () => {
+      const svg = d3
+        .select(currentElement)
+        .append("svg")
+        .attr("width", 200)
+        .attr("height", 100)
+        .attr("id", `bar`)
+        .style("position", "absolute");
+      const path = d3.path();
+      path.moveTo(98, 0);
+      path.lineTo(102, 0);
+      path.lineTo(102, 70);
+      path.lineTo(98, 70);
+      path.closePath();
+
+      const example = d3
+        .select(`#bar`)
+        .append("path")
+        .attr("d", path.toString())
+        .attr("stroke", "none")
+        .style("fill", "white");
+    };
+
     RemovePrev();
     drawFirstSvg();
     drawSecondSvg();
+    drawMiddleBar();
     prevData.current = data;
   }, [data]);
 
