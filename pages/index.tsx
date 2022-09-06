@@ -3,6 +3,7 @@ import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
 import { io } from "socket.io-client";
 import Canvas from "../src/Canvas";
 import DepthDthree from "../src/DepthDthree";
+import DepthCanvas from "../src/DepthCanvas";
 import Rectangle from "../src/Rectangle";
 
 const socket = io("http://localhost:8000", { transports: ["websocket"] });
@@ -44,7 +45,9 @@ const Home = () => {
         <Canvas data={data} key={index} />
       ))} */}
 
-      <DepthDthree order={0} data={data} />
+      {/* <DepthDthree order={0} data={data} /> */}
+
+      <DepthCanvas data={data} />
     </div>
   );
 };

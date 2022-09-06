@@ -14,7 +14,6 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
   const RemovePrev = () => {
     d3.select(`#box${order}`).remove();
     d3.select(`#box${order}second`).remove();
-    // d3.select(`#text${order}`).remove();
   };
 
   useEffect(() => {
@@ -104,13 +103,6 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
     };
 
     const addText = () => {
-      // const svg = d3
-      //   .select(currentElement)
-      //   .append("svg")
-      //   .attr("width", 200)
-      //   .attr("height", 200)
-      //   .attr("id", `text${order}`);
-
       const lgText = d3
         .select(`#box${order}`)
         .append("defs")
@@ -144,7 +136,6 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
         .style("font", "bold 60px sans-serif")
         .style("fill", "url(#lgText)")
         .text(`${height}`);
-      // .text("100");
 
       const meterText = d3
         .select(`#box${order}`)
