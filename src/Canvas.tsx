@@ -61,7 +61,9 @@ const Canvas = ({ data }: CanvasT) => {
     // canvas.style.left = "0px";
 
     const gradient = context.createLinearGradient(0, 0, 200, 0);
-    gradient.addColorStop(0.5, "green");
+    gradient.addColorStop(0.2, "#2cadd1");
+    // gradient.addColorStop(0.5, "#7fa9d8");
+    gradient.addColorStop(0.5, "#8794a2");
     gradient.addColorStop(0.5, "#8794a2");
     gradient.addColorStop(0.7, "#7fa9d8");
     gradient.addColorStop(1, "#2cadd1");

@@ -47,6 +47,10 @@ const Home = () => {
 
       {/* <DepthDthree order={0} data={data} /> */}
 
+      {/* {sampleData.map((_, index) => (
+        <DepthDthree data={data} order={index} key={index} />
+      ))} */}
+
       <DepthCanvas data={data} />
     </div>
   );

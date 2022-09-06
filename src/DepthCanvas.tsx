@@ -41,8 +41,17 @@ const DepthCanvas = ({ data }: DepthCanvasT) => {
       context.stroke();
       context.fill();
 
-      context.fillStyle = "white";
+      context.fillStyle = "#505356";
       context.fillRect(0, dy, 150, 200 - dy);
+
+      context.beginPath();
+      context.fillStyle = "white";
+      context.moveTo(150, 200);
+      context.bezierCurveTo(150, 200, 70, 200, 70, 0);
+      context.lineTo(150, 0);
+      context.lineTo(150, 200);
+      context.stroke();
+      context.fill();
     };
 
     const render = () => {

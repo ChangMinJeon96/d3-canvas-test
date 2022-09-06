@@ -44,7 +44,6 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
         .select(`#box${order}`)
         .append("path")
         .attr("d", path.toString())
-        // .attr("stroke", "none")
         .style("fill", "#505356");
     };
 
@@ -59,8 +58,8 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
         .transition()
         .ease(d3.easeLinear)
         .duration(600)
-        // .attr("height", `${150}`);
         .attr("height", `${height}`);
+      // .attr("height", `${100}`);
 
       const lgSecond = d3
         .select(`#box${order}second`)
