@@ -26,8 +26,6 @@ const Rectangle = ({ data, order }: RectangleT) => {
     const prevWidth = prevData.current * 20;
     console.log("prevWidth: ", prevWidth);
 
-    // RemovePrev();
-
     const drawFirstSvg = () => {
       const svg = d3
         .select(currentElement)
@@ -86,7 +84,8 @@ const Rectangle = ({ data, order }: RectangleT) => {
         .transition()
         .ease(d3.easeLinear)
         .duration(600)
-        .attr("width", `${width}`);
+        .attr("width", `140`);
+      // .attr("width", `${width}`);
 
       const lgSecond = d3
         .select(`#box${order}second`)
@@ -187,7 +186,34 @@ const Rectangle = ({ data, order }: RectangleT) => {
   // }, []);
 
   return (
-    <div ref={ref} style={{ position: "relative", height: "105px" }}></div>
+    <div
+      ref={ref}
+      style={{
+        position: "relative",
+        height: "105px",
+        // backgroundColor: "#23262d",
+        width: "200px",
+      }}
+    >
+      {/* <div
+        style={{
+          position: "absolute",
+          top: "100px",
+          backgroundColor: "#23262d",
+          width: "200px",
+          height: "100px",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "30px",
+          fontWeight: 1000,
+        }}
+      >
+        {data * 20}
+        <span>&deg;</span>
+      </div> */}
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
 import { io } from "socket.io-client";
 import Canvas from "../src/Canvas";
+import DepthDthree from "../src/DepthDthree";
 import Rectangle from "../src/Rectangle";
 
 const socket = io("http://localhost:8000", { transports: ["websocket"] });
@@ -31,7 +32,7 @@ const Home = () => {
         gap: "20px",
       }}
     >
-      <Rectangle data={data} order={0} />
+      {/* <Rectangle data={data} order={0} /> */}
 
       {/* {sampleData.map((_, index) => (
         <Rectangle data={data} order={index} key={index} />
@@ -42,6 +43,8 @@ const Home = () => {
       {/* {sampleData.map((_, index) => (
         <Canvas data={data} key={index} />
       ))} */}
+
+      <DepthDthree order={0} data={data} />
     </div>
   );
 };
