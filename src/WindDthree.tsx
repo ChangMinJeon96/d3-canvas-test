@@ -162,11 +162,11 @@ const WindDthree = ({ data, order }: WindDthreeT) => {
         .style("fill", "#f2cbb8")
         .style("stroke-width", "2 ")
         .attr("transform-origin", "150 150")
-        .attr("transform", `rotate(${prevDegree - 450})`)
+        .attr("transform", `rotate(${degree - 450})`)
         .transition()
         .ease(d3.easeLinear)
         .duration(600)
-        .attr("transform", `rotate(${degree - 450})`);
+        .attr("transform", `rotate(${prevDegree - 450})`);
     };
 
     const addText = () => {
@@ -249,7 +249,7 @@ const WindDthree = ({ data, order }: WindDthreeT) => {
   return (
     <div
       ref={ref}
-      style={{ position: "relative", width: "300px", height: "300px" }}
+      style={{ position: "relative", width: "400px", height: "300px" }}
     ></div>
   );
 };
