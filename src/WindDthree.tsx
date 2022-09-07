@@ -236,7 +236,7 @@ const WindDthree = ({ data, order }: WindDthreeT) => {
         .attr("y", 130)
         .style("font", "bold 50px sans-serif")
         .style("fill", "url(#lgTextDegree)")
-        .text(`${degree}`);
+        .text(`${degree}` + "°");
     };
 
     RemovePrev();
