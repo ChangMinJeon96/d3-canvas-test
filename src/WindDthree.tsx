@@ -41,6 +41,58 @@ const WindDthree = ({ data, order }: WindDthreeT) => {
         .style("stroke-width", "2.5")
         .style("fill", "transparent");
 
+      const northDirectionPath = d3.path();
+      northDirectionPath.moveTo(146, 70);
+      northDirectionPath.lineTo(150, 74);
+      northDirectionPath.lineTo(154, 70);
+      northDirectionPath.closePath();
+
+      const northDirection = d3
+        .select(`#windBox${order}`)
+        .append("path")
+        .attr("d", northDirectionPath.toString())
+        .style("stroke", "white")
+        .style("fill", "white");
+
+      const westDirectionPath = d3.path();
+      northDirectionPath.moveTo(70, 146);
+      northDirectionPath.lineTo(74, 150);
+      northDirectionPath.lineTo(70, 154);
+      northDirectionPath.closePath();
+
+      const westDirection = d3
+        .select(`#windBox${order}`)
+        .append("path")
+        .attr("d", northDirectionPath.toString())
+        .style("stroke", "white")
+        .style("fill", "white");
+
+      const southDirectionPath = d3.path();
+      northDirectionPath.moveTo(146, 230);
+      northDirectionPath.lineTo(150, 226);
+      northDirectionPath.lineTo(154, 230);
+      northDirectionPath.closePath();
+
+      const southDirection = d3
+        .select(`#windBox${order}`)
+        .append("path")
+        .attr("d", northDirectionPath.toString())
+        .style("stroke", "white")
+        .style("fill", "white");
+
+      const eastDirectionPath = d3.path();
+      northDirectionPath.moveTo(230, 146);
+      northDirectionPath.lineTo(226, 150);
+      northDirectionPath.lineTo(230, 154);
+      northDirectionPath.closePath();
+
+      const easthDirection = d3
+        .select(`#windBox${order}`)
+        .append("path")
+        .attr("d", northDirectionPath.toString())
+        .style("stroke", "white")
+        .style("fill", "white");
+
       const vesselPath = d3.path();
       vesselPath.moveTo(130, 200);
       vesselPath.lineTo(130, 120);
@@ -81,6 +133,40 @@ const WindDthree = ({ data, order }: WindDthreeT) => {
         .ease(d3.easeLinear)
         .duration(600)
         .attr("transform", `rotate(${degree})`);
+
+      const linearArrowPath = d3.path();
+      linearArrowPath.moveTo(150, 220);
+      linearArrowPath.lineTo(150, 210);
+      linearArrowPath.moveTo(150, 200);
+      linearArrowPath.lineTo(150, 190);
+      linearArrowPath.moveTo(150, 180);
+      linearArrowPath.lineTo(150, 170);
+      linearArrowPath.moveTo(150, 160);
+      linearArrowPath.lineTo(150, 150);
+      linearArrowPath.moveTo(150, 140);
+      linearArrowPath.lineTo(150, 130);
+      linearArrowPath.moveTo(150, 120);
+      linearArrowPath.lineTo(150, 110);
+      linearArrowPath.moveTo(150, 100);
+      linearArrowPath.lineTo(150, 90);
+      linearArrowPath.lineTo(145, 90);
+      linearArrowPath.lineTo(150, 80);
+      linearArrowPath.lineTo(155, 90);
+      linearArrowPath.lineTo(150, 90);
+
+      const linearArrow = d3
+        .select(`#windBox${order}`)
+        .append("path")
+        .attr("d", linearArrowPath.toString())
+        .style("stroke", "#f2cbb8")
+        .style("fill", "#f2cbb8")
+        .style("stroke-width", "2 ")
+        .attr("transform-origin", "150 150")
+        .attr("transform", `rotate(${prevDegree - 450})`)
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(600)
+        .attr("transform", `rotate(${degree - 450})`);
     };
 
     const addText = () => {
