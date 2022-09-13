@@ -24,42 +24,6 @@ const Canvas = ({ data }: CanvasT) => {
     canvas.style.width = "300px";
     canvas.style.height = "150px";
 
-    // const canvasback = BackCanvasRef.current as HTMLCanvasElement;
-    // const contextback = canvasback?.getContext(
-    //   "2d"
-    // ) as CanvasRenderingContext2D;
-
-    // canvasback.style.width = "300px";
-    // canvasback.style.height = "150px";
-
-    // const gradientback = contextback.createLinearGradient(0, 0, 200, 0);
-    // gradientback.addColorStop(0, "#2cadd1");
-    // gradientback.addColorStop(0.2, "#7fa9d8");
-    // gradientback.addColorStop(0.5, "#8794a2");
-    // gradientback.addColorStop(0.5, "white");
-
-    // const drawBackLine = () => {
-    //   contextback.clearRect(0, 0, 200, 100);
-    //   contextback.fillStyle = gradientback;
-    //   contextback.strokeStyle = "white";
-    //   contextback.beginPath();
-    //   contextback.moveTo(0, 0);
-    //   contextback.lineTo(200, 0);
-    //   contextback.lineTo(200, 100);
-    //   contextback.bezierCurveTo(200, 100, 100, 30, 0, 100);
-    //   contextback.lineTo(0, 0);
-    //   contextback.stroke();
-    //   contextback.fill();
-    //   // contextback.beginPath();
-    // };
-
-    // drawBackLine();
-
-    // canvas.style.position = "absolute";
-    // canvas.style.transform = "translateX(-250px)";
-    // canvas.style.top = "0px";
-    // canvas.style.left = "0px";
-
     const gradient = context.createLinearGradient(0, 0, 200, 0);
     gradient.addColorStop(0.2, "#2cadd1");
     // gradient.addColorStop(0.5, "#7fa9d8");
@@ -113,39 +77,8 @@ const Canvas = ({ data }: CanvasT) => {
     };
   }, [data]);
 
-  // useEffect(() => {
-  //   const canvasback = BackCanvasRef.current as HTMLCanvasElement;
-  //   const contextback = canvasback?.getContext(
-  //     "2d"
-  //   ) as CanvasRenderingContext2D;
-
-  //   const gradient = contextback.createLinearGradient(0, 0, 200, 0);
-  //   gradient.addColorStop(0, "#2cadd1");
-  //   gradient.addColorStop(0.2, "#7fa9d8");
-  //   gradient.addColorStop(0.5, "#8794a2");
-  //   gradient.addColorStop(0.5, "white");
-
-  //   const drawBackLine = () => {
-  //     contextback.clearRect(0, 0, 200, 100);
-  //     contextback.fillStyle = gradient;
-  //     contextback.strokeStyle = "white";
-  //     contextback.beginPath();
-  //     contextback.moveTo(0, 0);
-  //     contextback.lineTo(200, 0);
-  //     contextback.lineTo(200, 100);
-  //     contextback.bezierCurveTo(200, 100, 100, 30, 0, 100);
-  //     contextback.lineTo(0, 0);
-  //     contextback.stroke();
-  //     contextback.fill();
-  //     contextback.beginPath();
-  //   };
-
-  //   drawBackLine();
-  // }, [data]);
-
   return (
     <div style={{ position: "relative" }}>
-      {/* <canvas ref={BackCanvasRef}></canvas> */}
       <canvas ref={canvasRef}></canvas>
     </div>
   );

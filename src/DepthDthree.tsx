@@ -120,7 +120,7 @@ const DepthDthree = ({ data, order }: DepthDthreeT) => {
       lgText
         .append("stop")
         .attr("offset", "70%")
-        .style("stop-color", "#c7cdd4 ");
+        .style("stop-color", "#c7cdd4");
 
       lgText
         .append("stop")

@@ -42,7 +42,8 @@ const DepthCanvas = ({ data }: DepthCanvasT) => {
       context.fill();
 
       context.fillStyle = "#505356";
-      context.fillRect(0, dy, 150, 200 - dy);
+      context.fillRect(0, 0, 150, 80);
+      context.fillRect(0, dy, 150, (200 - dy) * 0.75);
 
       context.beginPath();
       context.fillStyle = "white";
