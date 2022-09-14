@@ -6,6 +6,7 @@ import DepthDthree from "../src/DepthDthree";
 import DepthCanvas from "../src/DepthCanvas";
 import WindDthree from "../src/WindDthree";
 import SvgTest from "../src/SvgTest";
+import Heading from "../src/Heading";
 import Rectangle from "../src/Rectangle";
 
 const socket = io("http://localhost:8000", { transports: ["websocket"] });
@@ -53,11 +54,13 @@ const Home = () => {
         <DepthDthree data={data} order={index} key={index} />
       ))} */}
 
-      <DepthCanvas data={data} />
+      {/* <DepthCanvas data={data} /> */}
 
       {/* <WindDthree order={0} data={data} /> */}
 
       {/* <SvgTest /> */}
+
+      <Heading data={data} />
     </div>
   );
 };
