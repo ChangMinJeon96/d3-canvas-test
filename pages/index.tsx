@@ -20,23 +20,23 @@ const Home = () => {
   const [data, setData] = useState(0);
   const [cog, setCog] = useState(300);
 
-  useEffect(() => {
-    socket.emit("server");
-    socket.on("server", (data) => {
-      // queryClient.setQueryData(["data"], data);
-      // console.log(data);
-      setData(data.value);
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.emit("server");
+  //   socket.on("server", (data) => {
+  //     // queryClient.setQueryData(["data"], data);
+  //     // console.log(data);
+  //     setData(data.value);
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    socket.emit("secondServer");
-    socket.on("secondServer", (data) => {
-      // queryClient.setQueryData(["data"], data);
-      console.log(data);
-      setCog(data.cogValue);
-    });
-  }, []);
+  // useEffect(() => {
+  //   socket.emit("secondServer");
+  //   socket.on("secondServer", (data) => {
+  //     // queryClient.setQueryData(["data"], data);
+  //     console.log(data);
+  //     setCog(data.cogValue);
+  //   });
+  // }, []);
 
   return (
     <div
