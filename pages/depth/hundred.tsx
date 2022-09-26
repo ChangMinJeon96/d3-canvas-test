@@ -4,7 +4,7 @@ import DepthDthree from "../../src/DepthDthree";
 const DepthHundred = () => {
   const [data, setData] = useState(0);
 
-  const sampleData = Array(50).fill(0);
+  const sampleData = Array(100).fill(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
