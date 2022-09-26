@@ -18,13 +18,23 @@ interface DataT {
 const Home = () => {
   const sampleData = Array(100).fill(0);
   const [data, setData] = useState(0);
+  const [cog, setCog] = useState(300);
 
   useEffect(() => {
     socket.emit("server");
     socket.on("server", (data) => {
       // queryClient.setQueryData(["data"], data);
-      console.log(data);
+      // console.log(data);
       setData(data.value);
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.emit("secondServer");
+    socket.on("secondServer", (data) => {
+      // queryClient.setQueryData(["data"], data);
+      console.log(data);
+      setCog(data.cogValue);
     });
   }, []);
 
@@ -60,7 +70,7 @@ const Home = () => {
 
       {/* <SvgTest /> */}
 
-      <Heading data={data} />
+      {/* <Heading data={data} cog={cog} /> */}
     </div>
   );
 };

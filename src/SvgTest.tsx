@@ -13,10 +13,10 @@ const SvgTest = () => {
       const svg = d3
         .select(currentElement)
         .append("svg")
-        .attr("width", 200)
-        .attr("height", 200)
+        .attr("width", 100)
+        .attr("height", 100)
         .attr("id", `svgTest`)
-        .attr("viewBox", "-100 -100 200 200");
+        .attr("viewBox", "20 20 30 30");
 
       const circle = d3
         .select("#svgTest")
@@ -25,8 +25,14 @@ const SvgTest = () => {
         .attr("cy", 100)
         .attr("r", 100)
         .style("fill", "green");
+
+      // const example = d3
+      //   .select("#svgTest")
+      //   .append("path")
+      //   .attr("d", "M10 10 l70 70 h10 ");
     };
 
+    d3.select(`#svgTest`).remove();
     drawSvg();
   }, []);
   return <div ref={ref} style={{ position: "relative" }}></div>;
