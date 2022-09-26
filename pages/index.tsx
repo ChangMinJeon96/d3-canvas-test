@@ -71,6 +71,7 @@ const Home = () => {
       {/* <SvgTest /> */}
 
       {/* <Heading data={data} cog={cog} /> */}
+      <h1>Hello</h1>
     </div>
   );
 };
